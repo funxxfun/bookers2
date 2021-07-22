@@ -9,7 +9,50 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="header">
+    <header class="navbar">
+      <div class="container">
+        <nav class="nav-left">Bookers</nav>
+        <nav>
+          <ul class="nav-right">
+            <% if user_signed_in? %>
+              <li class="button">
+                <%= link_to "Home", user_path(current_user) %>
+              </li>
+              <li class="button">
+                <%= link_to "Users", users_path %>
+              </li>
+              <li class="button">
+                <%= link_to "Books",books_path %>
+              </li>
+              <li class="button">
+                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+              </li>
+             <% else %>
+              <li class="button">
+                <%= link_to "Home", root_path %>
+              </li>
+              <li class="button"><
+                <%= link_to "About",home_about_path %>
+              <li class="button"><
+                <%= link_to "sign up", new_user_registra_path %>
+              <li class="button"><
+                <%= link_to "login", new_user_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    
+    
     <%= yield %>
+  
+  
+    <footer>
+      <p class="footer-text">CopyRight Infratop.inc</p>
+    </footer>
+    
   </body>
 </html>

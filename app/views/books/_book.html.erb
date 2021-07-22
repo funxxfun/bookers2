@@ -1,0 +1,16 @@
+<%= form_with model: @post_image, local:true do |f| %>
+  <div>
+    <%= f.label :Title %>
+    <%= f.text_fiild :title %>
+  </div>
+  
+  <div>
+    <%= f.label :Opinion %>
+    <%= f.text_area :body %>
+  </div>
+  
+  <div>
+    <%= f.submit 'Create Book' %>
+  </div>
+
+< % end %>
