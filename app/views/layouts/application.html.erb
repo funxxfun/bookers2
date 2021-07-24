@@ -12,7 +12,11 @@
   <body class="header">
     <header class="navbar">
       <div class="container">
-        <nav class="nav-left">Bookers</nav>
+        <nav class="nav-left">
+          <a>
+          <%= link_to "Bookers", root_path %>
+          </a>
+        </nav>
         <nav>
           <ul class="nav-right">
             <% if user_signed_in? %>
@@ -32,11 +36,11 @@
               <li class="button">
                 <%= link_to "Home", root_path %>
               </li>
-              <li class="button"><
-                <%= link_to "About",home_about_path %>
-              <li class="button"><
-                <%= link_to "sign up", new_user_registra_path %>
-              <li class="button"><
+              <li class="button">
+                <%= link_to "About", home_about_path %>
+              <li class="button">
+                <%= link_to "sign up", new_user_registration_path %>
+              <li class="button">
                 <%= link_to "login", new_user_session_path %>
               </li>
             <% end %>

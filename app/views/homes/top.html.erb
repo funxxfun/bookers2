@@ -1,4 +1,17 @@
+<!--<% if flash[:notice] %>-->
+<!-- <p id="notice">-->
+<!--<%= flash[:notice] %>-->
+<!-- </p>-->
+<!--<% end %>-->
+
 <h1>welcome to Bookers!!</h1>
 <p>In Bookers,</br>
 you can share and exchange your opinions , inpressions ,and emotions</p>
 <p>about various books!</p>
+
+<div>
+<%= link_to "Log in", new_user_session_path %>
+</div>
+<div>
+<%= link_to "Sign Up", new_user_registration_path %>
+</div>

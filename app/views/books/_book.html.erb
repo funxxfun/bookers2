@@ -1,4 +1,5 @@
-<%= form_with model: @post_image, local:true do |f| %>
+<h1>New book</h1>
+<%= form_with model:book, local:true do |f| %>
   <div>
     <%= f.label :Title %>
     <%= f.text_fiild :title %>
@@ -13,4 +14,4 @@
     <%= f.submit 'Create Book' %>
   </div>
 
-< % end %>
+<% end %>

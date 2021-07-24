@@ -1,0 +1,25 @@
+<div>
+  <%= render 'users/user', users: @users %>
+</div>
+<div>
+  <%= render 'books/book', books: @books %>
+</div>
+<div>
+<h1>Users</h1>
+  <table>
+    <thead>
+      <!--<th>image</th>-->
+      <th>name</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <!--<td><%= attachment_image_tag user, :profile_image %></td>-->
+          <td><%= user.name %></td>
+          <td><%= link_to "Show",user_path(user.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> 

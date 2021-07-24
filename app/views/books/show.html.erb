@@ -1,27 +1,29 @@
-<div>
-  <h1>User info</h1>
-  <%= render 'users/user', user: @user %>
-</div>
+<!--<% if flash[:notice] %>-->
+<!-- <p id="notice">-->
+<!--<%= flash[:notice] %>-->
+<!-- </p>-->
+<!--<% end %>-->
 
 <div>
-<h1>New book</h1>
-  <%= render 'books/book', book: @book %>
+  <%= render 'users/user', users: @users %>
 </div>
-
+<div>
+  <%= render 'books/book', books: @books %>
+</div>
 <div>
   <h1>Book detail</h1>
   <table>
     <tbody>
       <tr>
-        <td><%= attachment_image_tag book.user %></td>
-        <td><%= link_to @user,name,user_path(@user %></td>
-        <td><%= book.title %></td>
-        <td><%= book.body %></td>
+        <!--<td><%= attachment_image_tag @book.user %></td>-->
+        <td><%= link_to @user,name,user_path(@user) %></td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
 
-        <% if @book.user.id == current_user.id %>
-         <td><%= link_to "Edit", edit_book_path(@book)</td>
-         <td><%= link_to "Destroy", book_path(@book), method: delete,data: {confirm: "本当に消しますか？"</td>
-    
+        <!--<% if @book.user.id = current_user.id %>-->
+         <td><%= link_to "Edit", edit_book_path(@book) %></td>
+         <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+        <!--<% end %>-->
       </tr>
     </tbody>
   </table>

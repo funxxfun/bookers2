@@ -1,5 +1,8 @@
-class Book < 
+class Book < ApplicationRecord
   
   belongs_to :user
-  attachment :image
+  attachment :profile_image
+  
+  validates :title, presence: true
+  validates :body, presence: true
 end

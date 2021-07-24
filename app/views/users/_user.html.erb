@@ -1,0 +1,14 @@
+<h1>User info</h1>
+<%= form_with model:user, local:true do |f| %>
+<%= attachment_image_tag user, :profile_image %>
+<div>
+  <h2>name</h2>
+  <%= f.text_field :name %>
+  <h2>introduction</h2>
+  <%= f.text_area :introduction %>
+</div>
+<div>
+  <%= link_to edit_user_path(user.id) do %>
+  <% end %>
+</div>
+<% end %>
