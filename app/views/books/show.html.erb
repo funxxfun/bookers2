@@ -1,29 +1,32 @@
-<!--<% if flash[:notice] %>-->
-<!-- <p id="notice">-->
-<!--<%= flash[:notice] %>-->
-<!-- </p>-->
-<!--<% end %>-->
+<% if flash[:notice] %>
+ <p id="notice">
+<%= flash[:notice] %>
+ </p>
+<% end %>
 
-<div>
+
+<!--部分テンプレート-->
+ <div>
   <%= render 'users/user', users: @users %>
-</div>
-<div>
+  </div>
+  <div>
   <%= render 'books/book', books: @books %>
-</div>
+  </div>
+  
 <div>
   <h1>Book detail</h1>
   <table>
     <tbody>
       <tr>
-        <!--<td><%= attachment_image_tag @book.user %></td>-->
-        <td><%= link_to @user,name,user_path(@user) %></td>
+        <td><%= attachment_image_tag @book.user %></td>
+        <td><%= link_to @user.name, user_path(@user) %></td>
         <td><%= @book.title %></td>
         <td><%= @book.body %></td>
 
-        <!--<% if @book.user.id = current_user.id %>-->
+        <% if @book.user.id = current_user.id %>
          <td><%= link_to "Edit", edit_book_path(@book) %></td>
          <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-        <!--<% end %>-->
+        <% end %>
       </tr>
     </tbody>
   </table>

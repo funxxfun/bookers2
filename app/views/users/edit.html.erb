@@ -3,7 +3,7 @@
   <h2>Name</h2>
     <%= f.text_field :name %>
   <h2>Image</h2>
-    <%= f.attachment_field :profile_image %>
+    <%= f.attachment_field :profile_image, :fill, 100, 100, format: 'jpeg' %>
   <h2>Introduction</h2>
     <%= f.text_area :introduction %>
   <div>

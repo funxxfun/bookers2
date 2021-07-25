@@ -1,35 +1,37 @@
-<!--<% if flash[:notice] %>-->
-<!-- <p id="notice">-->
-<!--<%= flash[:notice] %>-->
-<!-- </p>-->
-<!--<% end %>  -->
+<% if flash[:notice] %>
+ <p id="notice">
+<%= flash[:notice] %>
+ </p>
+<% end %>  
   
+ <!--部分テンプレート-->
   <div>
-  <%= render 'users/user', users: @users %>
+  <%= render 'users/user', user: @user %>
   </div>
   <div>
-  <%= render 'books/book', books: @books %>
+  <%= render 'books/book', book: @book %>
   </div>
+
   <div>
     <h1>Books</h1>
     <table>
       <thead>
-        <!--<th></th>-->
+        <th></th>
         <th>Title</th>
         <th>Opinion</th>
       </thead>
       <tbody>
-        <%= @books.each do |book| %>
         <tr>
-          <!--<td>-->
-          <!-- <%= link_to user_path(@book.user) do %>-->
-          <!-- <%= attachment_image_tag book.user, :profile_image %>-->
-          <!-- <% end %>-->
-          <!--</td>-->
-          <td><%= @book.title %></td>
+          <td>
+           <%= link_to user_path(@user.id) do %>
+           <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+           <% end %>
+          </td>
+        <%= @books.each do |book| %>
+          <td><%= book.title %></td>
           <td><%= @book.body %></td>
-        </tr>
         <% end %>
+        </tr>
       </tbody>
     </table>
   </div>
