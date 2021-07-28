@@ -1,12 +1,16 @@
-<h1>User info</h1>
-<%= form_with model: @user, local:true do |f| %>
-  <h2>Name</h2>
+<div class="container">
+ <div class="center-block">
+  <div class="col-md-3">
+  <h1>User info</h1>
+  <%= form_with model: @user, local:true do |f| %>
+  <h4>Name</h4>
     <%= f.text_field :name %>
-  <h2>Image</h2>
-    <%= f.attachment_field :profile_image, :fill, 100, 100, format: 'jpeg' %>
-  <h2>Introduction</h2>
+  <h4>Image</h4>
+    <%= f.attachment_field :profile_image, fallback: "no_image.jpg" %>
+  <h4>Introduction</h4>
     <%= f.text_area :introduction %>
-  <div>
-    <%= f.submit "Update User" %>
-  </div>  
+      <%= f.submit "Update User", class: "btn btn-secondary" %>
 <% end %>
+  </div>
+ </div>
+</div>

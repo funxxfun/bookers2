@@ -2,37 +2,47 @@
  <p id="notice">
 <%= flash[:notice] %>
  </p>
-<% end %>  
-  
- <!--部分テンプレート-->
-  <div>
-  <%= render 'users/user', user: @user %>
-  </div>
-  <div>
-  <%= render 'books/book', book: @book %>
+<% end %>
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+   <div class="sidebar_content">
+    <div>
+     <h1>User info</h1>
+     <%= render 'users/user', user: @user %>
+    </div>
+    <div>
+     <h1>New book</h1>
+     <%= render 'books/book', book: @book %>
+    </div>
+   </div>
   </div>
 
-  <div>
+  <div class = "col-md-9">
     <h1>Books</h1>
-    <table>
-      <thead>
+    <table class="table table-striped">
+     <thead>
+      <tr>
         <th></th>
         <th>Title</th>
         <th>Opinion</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-           <%= link_to user_path(@user.id) do %>
-           <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
-           <% end %>
-          </td>
-        <%= @books.each do |book| %>
-          <td><%= book.title %></td>
-          <td><%= @book.body %></td>
-        <% end %>
-        </tr>
-      </tbody>
+      </tr>
+     </thead>
+     <tbody>
+       <tr>
+      <% @books.each do |book| %>
+        <td>
+         <%= link_to user_path(book.user) do %>
+          <%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+         <% end %>
+        </td>
+        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= book.body %></td>
+       </tr>
+      <% end %>
+     </tbody>
     </table>
   </div>
-  
+ </div>
+</div>

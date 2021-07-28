@@ -5,29 +5,40 @@
 <% end %>
 
 
-<!--部分テンプレート-->
- <div>
-  <%= render 'users/user', users: @users %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+   <div class="sidebar_content">
+    <div>
+     <h1>User info</h1>
+     <%= render 'users/user', user: @user %>
+    </div>
+    <div>
+     <h1>New book</h1>
+     <%= render 'books/book', book: @newbook %>
+    </div>
+   </div>
   </div>
-  <div>
-  <%= render 'books/book', books: @books %>
-  </div>
-  
-<div>
-  <h1>Book detail</h1>
-  <table>
-    <tbody>
-      <tr>
-        <td><%= attachment_image_tag @book.user %></td>
-        <td><%= link_to @user.name, user_path(@user) %></td>
-        <td><%= @book.title %></td>
-        <td><%= @book.body %></td>
 
-        <% if @book.user.id = current_user.id %>
-         <td><%= link_to "Edit", edit_book_path(@book) %></td>
-         <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-md-9">
+   <h1>Book detail</h1>
+   <table class="table table-striped">
+     <tbody>
+       <tr>
+         <td>
+          <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></br>
+          <%= link_to @user.name, user_path(@user) %></td>
+         <td><%= link_to @book.title, book_path(@book) %></td>
+         <td><%= @book.body %></td>
+         <td>
+          <% if @book.user.id == current_user.id %>
+          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary" %>
+          <%= link_to "Destroy", book_path(@book), class: "btn btn-secondary", method: :delete, "data-confirm" => "本当に消しますか？" %>
+          <% end %>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+  </div>
+ </div>
 </div>

@@ -1,27 +1,39 @@
-<!--部分テンプレート-->
- <div>
-  <%= render 'users/user', users: @users %>
-  </div>
-  <div>
-  <%= render 'books/book', books: @books %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+   <div class="sidebar_content">
+    <div>
+     <h1>User info</h1>
+     <%= render 'users/user', user: @user %>
+    </div>
+    <div>
+     <h1>New book</h1>
+     <%= render 'books/book', book: @book %>
+    </div>
+   </div>
   </div>
 
-<div>
-<h1>Users</h1>
-  <table>
-    <thead>
-      <th>image</th>
-      <th>name</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
-          <td><%= user.name %></td>
-          <td><%= link_to "Show", user_path(user.id) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+   <div class = "col-md-9">
+     <h1>Users</h1>
+      <table class="table table-striped">
+        <thead>
+         <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+     </div>
+  </div>
 </div> 

@@ -1,17 +1,23 @@
-<!--<% if flash[:notice] %>-->
-<!-- <p id="notice">-->
-<!--<%= flash[:notice] %>-->
-<!-- </p>-->
-<!--<% end %>-->
+<% if flash[:notice] %>
+ <p id="notice">
+<%= flash[:notice] %>
+ </p>
+<% end %>
 
-<h1>welcome to Bookers!!</h1>
-<p>In Bookers,</br>
-you can share and exchange your opinions , inpressions ,and emotions</p>
-<p>about various books!</p>
+<div class="container">
+  <div class="center-block">
+   <h1>welcome to<i class="fas fa-book"></i><strong>Bookers!!</strong></h1>
+   <div class = "top-text">
+   <p>In<i class="fas fa-book"></i><strong>Bookers</strong>,</br>
+   you can share and exchange your opinions , inpressions ,and emotions</p>
+   <p>about various books!</p>
 
-<div>
-<%= link_to "Log in", new_user_session_path %>
-</div>
-<div>
-<%= link_to "Sign Up", new_user_registration_path %>
+    <div>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+    </div>
+    <div>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+    </div>
+
+  </div>
 </div>
