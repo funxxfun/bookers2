@@ -4,6 +4,13 @@
  </p>
 <% end %>
 
+ <% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 
 
 <div class="container">

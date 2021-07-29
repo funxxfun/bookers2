@@ -19,7 +19,7 @@
    </div>
   </div>
 
-  <div class = "col-md-9">
+  <div class = "col-md-8 offset-md-1">
     <h1>Books</h1>
     <table class="table table-striped">
      <thead>
@@ -37,7 +37,7 @@
           <%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
          <% end %>
         </td>
-        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= link_to book.title, book_path(book.id) %></td>
         <td><%= book.body %></td>
        </tr>
       <% end %>
