@@ -4,13 +4,10 @@
   <tr><th>introduction</th><td><%= user.introduction %></td></tr>
   </table>
   <tr><th colspan="2">
-    <% if user == current_user %>
-      <%= link_to edit_user_path(current_user), class: "btn btn-default btn-block" do %>
-      <span class="fas fa-user-cog fa-border"></span>
+      <%= link_to edit_user_path(user), class: "btn btn-default btn-block border col-12 mx-auto" do %>
+      <span class="fas fa-user-cog"></span>
       <% end %>
-    <%# else %>
-      <%#= render 'users/show' %>
-    <% end %>
+  
 
 
   </th></tr>

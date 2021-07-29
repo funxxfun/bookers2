@@ -32,8 +32,8 @@
          <td><%= @book.body %></td>
          <td>
           <% if @book.user.id == current_user.id %>
-          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary" %>
-          <%= link_to "Destroy", book_path(@book), class: "btn btn-secondary", method: :delete, "data-confirm" => "本当に消しますか？" %>
+          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %>
+          <%= link_to "Destroy", book_path(@book), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
           <% end %>
          </td>
        </tr>
