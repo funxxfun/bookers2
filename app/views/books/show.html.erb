@@ -33,7 +33,7 @@
          <!--「いいね機能」ここから追加-->
          <td>
           <% if @book.favorited_by?(current_user) %>
-           <%= link_to book_favorite_path(@book.id), method: :delete do %>
+           <%= link_to book_favorites_path(@book.id), method: :delete do %>
            ♥<%= @book.favorites.count %>
            <% end %>
           <% else %>
@@ -41,8 +41,8 @@
            ♡<%= @book.favorites.count %>
            <% end %>
           <% end %>
-         <td><p>コメント数：<%= @book.book_comments.count %></p></td>
          </td>
+         <td><p>コメント数：<%= @book.book_comments.count %></p></td>
          <td>
           <% if @book.user.id == current_user.id %>
           <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %>
@@ -51,31 +51,31 @@
          </td>
        </tr>
           <!--「コメント機能」ここから追加-->
-      
+
        <table>
         <tr>
          <% @book.book_comments.each do |book_comment| %>
          <td>
           <%= attachment_image_tag book_comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></br>
-          <%= book_comment.user.name %>
+          <%= link_to book_comment.user.name, user_path(book_comment.user) %>
          </td>
          <td><%= book_comment.comment %></td>
          <td>
           <% if book_comment.user.id == current_user.id %>
-           <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn-danger" %>
+           <%= link_to "Destroy", book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger" %>
           <% end %>
          </td>
-         <% end %> 
         </tr>
-       </table> 
-       
+         <% end %>
+       </table>
+
        <div class="new-comment">
         <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
           <%= f.text_area :comment, rows:'5' %>
           <%= f.submit "送信" %>
         <% end %>
        </div>
-         
+
      </tbody>
    </table>
   </div>

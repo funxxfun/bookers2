@@ -12,7 +12,7 @@
     </div>
    </div>
   </div>
-  
+
   <div class = "col-md-8 offset-md-1">
    <h1>Books</h1>
     <table class="table table-striped">
@@ -37,20 +37,20 @@
        <td><%= book.body %></td>
        <!--「いいね」ここから追加-->
        <td>
-        <% if @book.favorited_by?(current_user) %>
-         <%= link_to book_favorite_path(book.id), method: :delete do %>
-         ♥<%= @book.favorites.count %>
+        <% if book.favorited_by?(current_user) %>
+         <%= link_to book_favorites_path(book.id), method: :delete do %>
+         ♥<%= book.favorites.count %>
          <% end %>
         <% else %>
          <%= link_to book_favorites_path(book.id), method: :post do %>
-         ♡<%= @book.favorites.count %>
+         ♡<%= book.favorites.count %>
          <% end %>
         <% end %>
        </td>
        <td><%= link_to "#{book.book_comments.count} コメント数", books_path %></td>
       </tr>
      <% end %>
-     
+
     </tbody>
    </table>
   </div>
