@@ -1,4 +1,4 @@
- <% if @user.errors.any? %>
+<% if @user.errors.any? %>
   <%= @user.errors.count %>error prohibited this obj from being saved:
   <% @user.errors.full_messages.each do |message| %>
     <%= message %>

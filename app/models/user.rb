@@ -7,32 +7,37 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  #ここからフォロー機能のための記述
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :follower, through: :active_relationships, source: :followed
-  has_many :followed, through: :passive_relationships, source: :follower
+ #ここからフォロー機能のための記述
+  # ====================自分がフォローしているユーザーとの関連 ===================================
+  #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollowing_id(フォローする側)
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  # 中間テーブルを介して「follower」モデルのUser(フォローされた側)を集めることを「followings」と定義
+  has_many :followings, through: :active_relationships, source: :follower
+  # ========================================================================================
 
+  # ====================自分がフォローされるユーザーとの関連 ===================================
+  #フォローされる側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。なので親はfollower_id(フォローされる側)
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  # 中間テーブルを介して「following」モデルのUser(フォローする側)を集めることを「followers」と定義
+  has_many :followers, through: :passive_relationships, source: :following
+  # =======================================================================================
+ 
   validates :name, presence: true, uniqueness: true, length: { in: 2..20}
   validates :introduction,  length: { maximum: 50}
 
   attachment :profile_image
 
 
-    # ここからコメント機能のための記述
+  # def followed_by?
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    # passive_relationships.find_by(followiing_id: user.id).present?
+  # end
 
-  # def follow(user_id)
-  #   active_relationships.create(follower_id: user_id)
-  # end
-  # def unfollow(user_id)
-  #   active_relationships.find_by(follower_id: user_id).destroy
-  # end
-  # def following?(user)
-  #   followings.include?(user)
-  # end
-  
-  
-  
+
+
+
+
+
 
 
 
