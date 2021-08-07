@@ -1,0 +1,29 @@
+<div class = "col-md-12 offset-md-1">
+  <h1>Follower-Users</h1>
+  <% if @users.exists? %>
+  <table class="table table-responsive">
+    <thead>
+     <tr colspan="2">
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+       <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td><%= user.name %></td>
+        <td><p>フォロー数：<%= user.followings.count %></p></td>
+        <td><p>フォロワー数：<%= user.followers.count %></p></td>
+        <td><p><%= link_to "Show", user_path(user.id) %></p></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+</div>
