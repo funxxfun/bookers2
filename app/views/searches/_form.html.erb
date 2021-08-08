@@ -1,0 +1,7 @@
+<%= form_with url: searches_search_path, method: :get, local: :true do %>
+  <%= text_field_tag :content %>
+  <%= select_tag :model, options_for_select([['User'], ['Book']]) %>
+  <%= select_tag :method, options_for_select([["完全一致","perfect"],["前方一致","front"],["後方一致","back"],["部分一致","part"]]) %>
+  <%= submit_tag "検索" %>
+<% end %>
+

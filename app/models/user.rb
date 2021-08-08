@@ -33,11 +33,24 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
-
-
-
-
+  
+  
+  def self.search(content, method)
+  # 選択した検索方法が完全一致だったら
+    if method == 'perfect'
+      where(name: content)
+    # 選択した検索方法が前方一致だったら
+    elsif method == 'front'
+      where('name LIKE ?', content+'%')
+    # 選択した検索方法が後方一致だったら
+    elsif method == 'back'
+      where('name LIKE ?', '%'+content)
+    # 選択した検索方法が部分一致だったら
+    else
+      where('name LIKE ?', '%'+content+'%')
+    end
+  end
+ 
 
 
 end

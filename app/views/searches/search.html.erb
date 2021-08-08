@@ -1,0 +1,7 @@
+<h1><%= params[:model] %>s search for"<%= params[:content] %>"</h1>
+
+<% if params[:model] == 'User' %>
+  <%= render 'users/index', users: @users %>
+<% else %>
+  <%= render 'books/index', books: @books %>
+<% end %>
