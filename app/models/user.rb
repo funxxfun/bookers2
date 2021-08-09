@@ -50,7 +50,5 @@ class User < ApplicationRecord
       where('name LIKE ?', '%'+content+'%')
     end
   end
- 
-
 
 end
