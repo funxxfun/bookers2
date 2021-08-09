@@ -14,3 +14,10 @@
   </tr>
    <% end %>
  </table>
+ 
+ <div class="new-comment">
+   <%= form_with(model:[@book, @book_comment]) do |f| %>
+     <%= f.text_area :comment, rows:'5' %>
+     <%= f.submit "送信" %>
+   <% end %>
+</div>

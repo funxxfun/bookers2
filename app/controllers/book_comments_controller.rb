@@ -3,19 +3,20 @@ before_action :authenticate_user!
 before_action :current_user, only: [:destroy]
 
 def create
- book = Book.find(params[:book_id])
+ @book = Book.find(params[:book_id])
  comment = BookComment.new(book_comment_params)
  comment.user_id = current_user.id
-#  comment = current_user.book_comments.new(book_comment_params)
  comment.book_id = book.id
  comment.save
- redirect_to request.referer
+ # 非同期通信のために削除
+ # redirect_to request.referer
 end
 
 def destroy
  @book = Book.find(params[:book_id])
  BookComment.find_by(id: params[:id],book_id:params[:book_id]).destroy
- redirect_to request.referer
+ # 非同期通信のため削除
+ # redirect_to request.referer
 end
 
 private
