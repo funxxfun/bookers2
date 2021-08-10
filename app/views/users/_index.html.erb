@@ -24,6 +24,8 @@
            <% else %>
              <td><p><%= link_to "フォローする", user_relationships_path(user.id), method: :post %></p></td>
            <% end %>
+          <% else %>
+            <td></td>
           <% end %>
             <!--ここまでフォロー機能-->
              <td><%= link_to "Show", user_path(user.id) %></td>
